@@ -14,10 +14,10 @@ app.use(cors());
 app.use(express.json());
 app.use('/paste', pasteRouter);
 
-// app.use(express.static(path.join(__dirname, 'frontend/dist')));
-// app.route('/home').get((req, res) => {
-//     res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'))
-// });
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
+app.route('/home').get((req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'))
+});
 
 const server = http.createServer(app);
 const io = new Server(server);
