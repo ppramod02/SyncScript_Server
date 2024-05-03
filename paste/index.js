@@ -5,6 +5,10 @@ dotenv.config();
 
 const client = new PasteClient(process.env.PASTEBIN_API_KEY);
 
+router.get('/', (req, res, next) => {
+	res.send({ message: 'Need some id to get paste' });
+})
+
 router.get('/:id', async (req, res, next) => {
 	const pasteKey = req.params.id;
 	const token = await client.login({ name: process.env.PASTEBIN_USERNAME, password: process.env.PASTEBIN_PASSWORD });
